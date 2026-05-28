@@ -1,37 +1,35 @@
-# Módulo: storage
+# Módulo: terraform-aws-s3-AUY1105-FRF
 
-Crea un bucket S3 con versionado habilitado y bloqueo de acceso público.
+## Objetivos del repositorio
+Módulo de Terraform para crear buckets S3 con versionado habilitado
+y acceso público bloqueado en AWS.
 
-## Recursos creados
+## Propósito general
+Provee almacenamiento seguro y reutilizable. El bucket recibe un
+sufijo aleatorio para garantizar nombre único globalmente.
 
-| Recurso | Descripción |
-|---|---|
-| `random_id` | Sufijo aleatorio para nombre único del bucket |
-| `aws_s3_bucket` | Bucket S3 con nombre único |
-| `aws_s3_bucket_versioning` | Habilita el versionado de objetos |
-| `aws_s3_bucket_public_access_block` | Bloquea todo acceso público |
+## Instrucciones básicas de uso
 
-## Uso
-
-```hcl
-module "storage" {
-  source      = "github.com/Gangsta98zoe/terraform-module-storage?ref=v0.1.0"
-  environment = "dev"
-  name_prefix = "prueba2"
-}
+```bash
+terraform init
+terraform plan
+terraform apply
 ```
 
-## Versiones
+## Recursos creados
+| Recurso | Descripción |
+|---|---|
+| random_id | Sufijo único para el nombre del bucket |
+| aws_s3_bucket | Bucket S3 con nombre único |
+| aws_s3_bucket_versioning | Versionado habilitado |
+| aws_s3_bucket_public_access_block | Acceso público bloqueado |
 
+## Versiones
 | Versión | Descripción |
 |---|---|
-| v0.1.0 | Módulo inicial: S3 con versionado y acceso público bloqueado |
-
-## Justificación SemVer
-
-- **v0.1.0**: Primera versión funcional del módulo de almacenamiento.
-- Nuevas variables/outputs incrementarán el **MINOR**.
-- Correcciones de bugs incrementarán el **PATCH**.
+| v0.1.0 | Estructura inicial del módulo |
+| v0.2.0 | Agrega examples/ y documentación |
+| v1.0.0 | Versión estable y documentada |
 ## Requirements
 
 | Name | Version |
