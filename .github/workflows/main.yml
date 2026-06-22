@@ -1,18 +1,15 @@
-name: CI - terraform-module-storage
-
+name: CI - terraform-aws-s3-AUY1105-FRF
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
-
+permissions:
+  contents: read
 jobs:
   call-terraform-workflow:
     name: Terraform Checks
     uses: ./.github/workflows/terraform.yml
     with:
       path: .
-
   call-checkov-workflow:
     name: Security Analysis
     uses: ./.github/workflows/checkov.yml
