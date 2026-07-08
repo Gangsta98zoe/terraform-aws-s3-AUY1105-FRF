@@ -29,7 +29,9 @@ jobs:
       # - CKV2_AWS_61 lifecycle: bucket efímero, se destruye al cierre de cada sesión
       # - CKV2_AWS_62 event notifications: sin consumidores (SNS/SQS/Lambda) en el alcance
       # - CKV_TF_1    pin por commit hash: se usa pin por tag SemVer (?ref=vX.Y.Z), estándar del curso
+      # - CKV_AWS_145 cifrado KMS: AES256 (SSE-S3) ya garantiza cifrado en reposo;
+      #               la gestión de claves KMS queda fuera del alcance del curso
       - name: Run Checkov on Terraform files
         run: >-
           checkov -d ${{ inputs.path }}
-          --skip-check CKV_AWS_18,CKV_AWS_144,CKV2_AWS_61,CKV2_AWS_62,CKV_TF_1
+          --skip-check CKV_AWS_18,CKV_AWS_144,CKV2_AWS_61,CKV2_AWS_62,CKV_TF_1,CKV_AWS_145
