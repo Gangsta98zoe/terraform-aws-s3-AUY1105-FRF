@@ -1,14 +1,6 @@
 # Changelog — terraform-aws-s3-AUY1105-FRF
 
-## [v1.1.0] - 2026-06-21
-### Added
-- Archivo versions.tf separado con requisitos de providers
-- Cifrado SSE (AES256) por defecto en el bucket S3
-
-### Changed
-- Bloque terraform{} movido desde main.tf a versions.tf
-
-## [v1.1.0] - 2026-06-21
+## [v1.1.0] - 2026-07-08
 ### Added
 - Archivo versions.tf separado con requisitos de providers
 - Cifrado SSE (AES256) por defecto en el bucket S3
