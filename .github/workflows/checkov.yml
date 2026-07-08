@@ -23,5 +23,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install checkov
+      # Excepciones documentadas (entorno académico AWS Learner Lab):
+      # - CKV_AWS_18  access logging: requiere segundo bucket de logs, fuera de alcance
+      # - CKV_AWS_144 replicación cross-region: Learner Lab restringe a us-east-1
+      # - CKV2_AWS_61 lifecycle: bucket efímero, se destruye al cierre de cada sesión
+      # - CKV2_AWS_62 event notifications: sin consumidores (SNS/SQS/Lambda) en el alcance
+      # - CKV_TF_1    pin por commit hash: se usa pin por tag SemVer (?ref=vX.Y.Z), estándar del curso
       - name: Run Checkov on Terraform files
-        run: checkov -d ${{ inputs.path }}
+        run: >-
+          checkov -d ${{ inputs.path }}
+          --skip-check CKV_AWS_18,CKV_AWS_144,CKV2_AWS_61,CKV2_AWS_62,CKV_TF_1
